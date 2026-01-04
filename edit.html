@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Editor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div class="container">
+<h1>Write Story</h1>
+
+<input id="title" placeholder="Story title"><br><br>
+<textarea id="story" placeholder="Write full story"></textarea><br><br>
+
+<button onclick="publish()">Publish</button>
+ </div>
+<script>
+  let stories = JSON.parse(localStorage.getItem("stories")) || [];
+
+  function publish() {
+    const title = document.getElementById("title").value.trim();
+    const story = document.getElementById("story").value.trim();
+
+    if (!title || !story) {
+      alert("Fill everything");
+      return;
+    }
+
+    stories.push({
+      id: Date.now(),
+      title: title,
+      story: story
+    });
+
+    localStorage.setItem("stories", JSON.stringify(stories));
+
+    alert("Published");
+
+    document.getElementById("title").value = "";
+    document.getElementById("story").value = "";
+  }
+</script>
+
+</body>
+</html>

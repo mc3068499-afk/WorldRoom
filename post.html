@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Post</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ---------- NAVIGATION ---------- */
+
+    body {
+      margin: 0;
+      background: #fdfdf6;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    .top-bar {
+      background: #008080;
+      color: #fff;
+      display: flex;
+      justify-content: flex-end;
+      gap: 30px;
+      padding: 8px 40px;
+      font-size: 0.9em;
+    }
+
+    .main-nav {
+      background: #ffffff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.6em;
+      font-weight: 600;
+      color: #008080;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-size: 1em;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #008080;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ---------- STORY READING ---------- */
+
+    .page {
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 720px;
+      width: 100%;
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      line-height: 1.9;
+    }
+
+    h1#title {
+      font-size: 2em;
+      margin-bottom: 25px;
+      text-align: center;
+      font-weight: 600;
+      color: #444;
+    }
+
+    p#story {
+      font-size: 1em;
+      white-space: pre-line;
+      text-align: justify;
+      color: #333;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 12px 25px;
+      background: #008080;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: #006666;
+      transform: scale(1.05);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .container {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <span>📞 +252 6XX XXX XXX</span>
+    <span>✉️ contact@wordroom.com</span>
+  </div>
+
+  <!-- Navigation -->
+  <header class="main-nav">
+    <div class="nav-container">
+      <div class="logo">WordRoom</div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="stories.html">Stories</a>
+        <a href="editor.html">Write</a>
+        <a href="post.html">Posts</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Story -->
+  <div class="page">
+    <div class="container">
+      <h1 id="title"></h1>
+      <p id="story"></p>
+      <a class="back-link" href="stories.html">Back to Stories</a>
+    </div>
+  </div>
+
+  <script>
+    const id = new URLSearchParams(window.location.search).get("id");
+    const stories = JSON.parse(localStorage.getItem("stories")) || [];
+    const post = stories.find(s => s.id == id);
+
+    if (!post) {
+      document.body.innerHTML = "<p style='text-align:center;margin-top:60px;font-size:1.2em;'>Story not found</p>";
+    } else {
+      document.getElementById("title").textContent = post.title;
+      document.getElementById("story").textContent = post.story;
+    }
+  </script>
+
+</body>
+</html>

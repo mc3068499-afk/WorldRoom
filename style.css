@@ -1,0 +1,264 @@
+/* style.css */
+
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body styles */
+body {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
+}
+
+/* Stories Page - Vertical List Style */
+
+body {
+  background: #f0f2f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+/* Story list */
+#list {
+  display: block;
+}
+
+#list p {
+  margin: 10px 0;
+}
+
+#list a {
+  display: inline-block;
+  text-decoration: none;
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border-left: 5px solid #6a11cb;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  color: #333;
+  font-size: 1.1em;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+#list a:hover {
+  background: #f7f5ff;
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 25px;
+  background: #6a11cb;
+  color: #fff;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  background: #2575fc;
+  transform: scale(1.05);
+}
+
+/* ================================== */
+/* Editor Page Styles */
+
+body {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #a18cd1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 600px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2.5em;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Input fields */
+input#title, textarea#story {
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 12px;
+  border: 2px solid #ddd;
+  font-size: 1em;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input#title:focus, textarea#story:focus {
+  border-color: #6a11cb;
+  box-shadow: 0 0 10px rgba(106,17,203,0.2);
+}
+
+/* Textarea */
+textarea#story {
+  height: 200px;
+  resize: vertical;
+}
+
+/* Publish Button */
+button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  background: #6a11cb;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #2575fc;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .container {
+    padding: 30px 20px;
+  }
+  h1 {
+    font-size: 2em;
+  }
+}
+
+/* Base */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: #f5f6fa;
+}
+
+/* Top bar */
+.top-bar {
+  background: #008080;
+  color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+  padding: 8px 40px;
+  font-size: 0.9em;
+}
+
+/* Main navigation */
+.main-nav {
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.8em;
+  font-weight: 600;
+  color: #008080;
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  gap: 35px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.05em;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+/* Underline hover effect */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #008080;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    margin-top: 15px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .top-bar {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

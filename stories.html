@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stories</title>
+
+  <style>
+    /* ---------- BASE ---------- */
+    body {
+      margin: 0;
+      background: #fdfdf6;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    /* ---------- TOP BAR ---------- */
+    .top-bar {
+      background: #008080;
+      color: #fff;
+      display: flex;
+      justify-content: flex-end;
+      gap: 30px;
+      padding: 8px 40px;
+      font-size: 0.9em;
+    }
+
+    /* ---------- NAVIGATION ---------- */
+    .main-nav {
+      background: #ffffff;
+      position: sticky;
+
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.6em;
+      font-weight: 600;
+      color: #008080;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-size: 1em;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #008080;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ---------- STORIES LIST ---------- */
+    .page {
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 720px;
+      width: 100%;
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 30px;
+      color: #444;
+    }
+
+    #list p {
+      margin: 12px 0;
+    }
+
+    #list a {
+      display: block;
+      padding: 15px 18px;
+      background: #f7f7f7;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.25s ease;
+    }
+
+    #list a:hover {
+      background: #eaeaea;
+      transform: translateX(5px);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: #008080;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: #006666;
+      transform: scale(1.05);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 600px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .container {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <span>📞 +252 6XX XXX XXX</span>
+    <span>✉️ contact@wordroom.com</span>
+  </div>
+
+  <!-- Navigation -->
+  <header class="main-nav">
+    <div class="nav-container">
+      <div class="logo">WordRoom</div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="stories.html">Stories</a>
+        <a href="editor.html">Write</a>
+        <a href="post.html">Posts</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Stories -->
+  <div class="page">
+    <div class="container">
+      <h1>Stories</h1>
+      <div id="list"></div>
+      <a class="back-link" href="index.html">Back Home</a>
+    </div>
+  </div>
+
+  <script>
+    const stories = JSON.parse(localStorage.getItem("stories")) || [];
+    const list = document.getElementById("list");
+
+    if (stories.length === 0) {
+      list.innerHTML = "<p>No stories published yet.</p>";
+    } else {
+      stories.forEach(s => {
+        list.innerHTML += `
+          <p>
+            <a href="post.html?id=${s.id}">
+              ${s.title}
+            </a>
+          </p>
+        `;
+      });
+    }
+  </script>
+
+</body>
+</html>
